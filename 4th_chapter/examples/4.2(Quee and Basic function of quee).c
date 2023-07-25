@@ -45,36 +45,36 @@ Characteristics of Queue:
 #define QSize 5
 
 typedef struct {
-    int data[QSize];
+    int data[QSize+1];
     int head, tail;
 }Queue;
 
-int enqueue (Queue *q, int item){
+void enqueue (Queue *q, int item){
+
     if((q->tail+1 )% (QSize+1)== q->head){
          printf("\n Queue is full !! and \n Tail is now: %d \n Head is now: %d \n ",q->tail,q->head);
-         return;
-    }
-    printf("\n Tail is now: %d  \n Head is now: %d \n and Equeued item is : %d \n\n",q->tail,q->head,item);
+    }else{
+    printf("# Equeued item is : %d \n Tail is now: %d  \n Head is now: %d \n\n",item,(q->tail+1)%(QSize+1),q->head);
     q->data[q->tail] = item;
-    q->tail++;
+    q->tail=(q->tail+1)%(QSize+1);
+    }
 }
 
-int dequeue (Queue *dq){
+int dequeue (Queue * dq){
     int item;
     if (dq->tail==dq->head){
         printf("Queue is empty !! cause \n Tail is now: %d \n Head is now: %d \n",dq->tail,dq->head);
-        return;
-    }
+    }else{
     item = dq->data[dq->head];
-    dq->head++;
+    dq->head=(dq->head+1 )% (QSize+1);
     return item;
+    }
 }
 
-printQueue(Queue *q ,int item){
-    printf("\n=====================================================================\n");
-    printf("Before dequeue Queue is \n Tail was: %d \n Head was: %d \n",(q->tail),(q->head - 1));
-    printf("The returned value is : %d \n Tail is now: %d \n Head is now: %d \n", item, q->tail, q->head);
-    printf("\n=====================================================================\n\n");
+void printQueue(Queue *q ,int item){
+    printf("\n===========================\n");
+    printf("The returned value is : %d \n Tail is now: %d \n Head is now: %d", item, q->tail, q->head);
+    printf("\n===========================\n\n");
 }
 
 int main(){
@@ -88,7 +88,7 @@ int main(){
     enqueue(&myQ,15);
     enqueue(&myQ,16);
     enqueue(&myQ,17);
-    printf("\n =====================================================================\n\n");
+    printf("\n####################################################################\n\n");
     item=dequeue(&myQ);
     printQueue(&myQ,item);
     item=dequeue(&myQ);
@@ -99,7 +99,32 @@ int main(){
     printQueue(&myQ,item);
     item=dequeue(&myQ);
     printQueue(&myQ,item);
+    enqueue(&myQ,17);
     item=dequeue(&myQ);
     printQueue(&myQ,item);
+    enqueue(&myQ,77);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
+    enqueue(&myQ,11);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
+    enqueue(&myQ,12);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
+    enqueue(&myQ,13);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
+    enqueue(&myQ,14);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
+    enqueue(&myQ,15);
+    item=dequeue(&myQ);
+    printQueue(&myQ,item);
+
     return 0;
 }
