@@ -5,21 +5,21 @@
 
 int isBalanced(char input[]);
 
-int main(){
+int main() {
     char input[100];
     //scanf("%[^\n]", str);
-    scanf("%s",input);
+    scanf("%s", input);
 
-    if(isBalanced(input)){
-        printf("%s is Balanced \n",input);
-    }else{
-        printf("%s is not Balanced \n",input);
+    if(isBalanced(input)) {
+        printf("%s is Balanced \n", input);
+    } else {
+        printf("%s is not Balanced \n", input);
     }
 
     return 0;
 }
 
-int isBalanced(char input[]){
+int isBalanced(char input[]) {
 
     char stack[100], lastChar;
     int top, i, lengthStr;
@@ -28,79 +28,59 @@ int isBalanced(char input[]){
 
     lengthStr = strlen(input);
 
-    for(i=0; i<lengthStr ; i++){
+    for(i = 0; i < lengthStr ; i++) {
 
-        if(input[i]=='('){
+        if(input[i] == '(') {
 
-                stack[top]='(';
-                top++;
+            stack[top] = '(';
+            top++;
 
-       }else if(input[i]=='{'){
+        } else if(input[i] == '{') {
 
-                stack[top]='{';
-                top++;
+            stack[top] = '{';
+            top++;
 
-       }else if(input[i]=='['){
+        } else if(input[i] == '[') {
 
-                stack[top]='[';
-                top++;
+            stack[top] = '[';
+            top++;
 
-       }else if(input[i]==')'){
+        } else if(input[i] == ')') {
 
-            if(top==0){//checking is stack is empty
-
+            if(top == 0) { //checking is stack is empty
                 return 0;
             }
-
             top--;
-
             lastChar = stack[top];
-
-            if(lastChar != '('){
-                return 0;
-
-                }
-        }else if(input[i]=='}'){
-
-            if(top==0){//checking is stack is empty
-
+            if(lastChar != '(') {
                 return 0;
             }
-
-            top--;
-
-            lastChar = stack[top];
-
-            if(lastChar != '{'){
-
-                return 0;
-
-                }
-           }else if(input[i]==']'){
-
-
-            if(top==0){//checking is stack is empty
-
+        } else if(input[i] == '}') {
+            if(top == 0) { //checking is stack is empty
                 return 0;
             }
-
             top--;
-
             lastChar = stack[top];
-
-            if(lastChar != '['){
-
+            if(lastChar != '{') {
                 return 0;
-
-                }
-           }
-
+            }
+        } else if(input[i] == ']') {
+            if(top == 0) { //checking is stack is empty
+                return 0;
+            }
+            top--;
+            lastChar = stack[top];
+            if(lastChar != '[') {
+                return 0;
+            }
         }
-    if(top == 0){
+
+    }
+    if(top == 0) {
 
         return 1;
 
-    }else{
+    } else {
 
         return 0;
 
