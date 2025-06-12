@@ -49,7 +49,7 @@ void push1(Stack * s, int item, int* size) {
         return;
     } else {
         *size += 1;
-        printf("Reallocated new size : %d\n", *size);
+        // printf("Reallocated new size : %d\n", *size);
     }
 
     s->data[s->count] = item;

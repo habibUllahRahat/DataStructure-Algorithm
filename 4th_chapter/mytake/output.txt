@@ -1,20 +1,7 @@
-Reallocated new size : 2
-Reallocated new size : 3
-Reallocated new size : 4
-Reallocated new size : 5
-Reallocated new size : 6
-Reallocated new size : 7
-Reallocated new size : 8
-Reallocated new size : 9
-Reallocated new size : 10
-18
-17
-16
-15
-14
-13
-12
-11
 10
-The Stack Is Empty size = 1
--1
+11
+12
+13
+14
+15
+Quee is empty -1
