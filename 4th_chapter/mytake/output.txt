@@ -1,7 +1,5 @@
-10
-11
-12
-13
-14
-15
-Quee is empty -1
+0 - Data => 30,Next => 0x36d672a0
+1 - Data => 10,Next => 0x36d672c0
+2 - Data => 20,Next => 0x36d672e0
+3 - Data => 25,Next => 0x36d67300
+4 - Data => 40,Next => (nil)
