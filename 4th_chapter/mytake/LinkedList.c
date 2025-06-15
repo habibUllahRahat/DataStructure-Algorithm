@@ -47,6 +47,16 @@ void print_node(Node* head) {
     printf("%d - Data => %d,Next => %p\n", i++, curr_node->data, curr_node->nextNodePtr);
 }
 
+Node *insertNode(Node *head, Node *afterNode, int data) {
+    Node *newNode = create_node(data, afterNode), *curr_node = head;
+    while(curr_node->nextNodePtr != afterNode) {
+        curr_node = curr_node->nextNodePtr;
+    }
+    curr_node->nextNodePtr = newNode;
+    return newNode;
+}
+
+
 Node *removeNode(Node *head, Node *toRemove) {
     if(head == toRemove) {
         head = toRemove->nextNodePtr;
@@ -69,11 +79,11 @@ int main() {
     head = create_node(10, NULL);
     n1 = append(head, 20);
     n2 = append(head, 25);
-    n3 = append(head, 40);
     head = preAppend(head, 30);// Because we are preappending the head, it will be the first node and the previous head will be the second node that won't be stored in any variable we created inside main function.
 
     // print_node(head);
     // head=removeNode(head, n2);
+    n3= insertNode(head, n1, 320);
     print_node(head);
     return 0;
 }
