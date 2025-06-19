@@ -1,5 +1,18 @@
-0 - Data => 30,Next => 0x3eb902a0
-1 - Data => 10,Next => 0x3eb90320
-2 - Data => 320,Next => 0x3eb902c0
-3 - Data => 20,Next => 0x3eb902e0
-4 - Data => 25,Next => (nil)
+First To Last print
+==========================
+0. Data => 0, Next => 0x305d12a0, Prev => (nil)
+1. Data => 1, Next => 0x305d12c0, Prev => 0x305d1320
+2. Data => 2, Next => 0x305d1340, Prev => 0x305d12a0
+3. Data => 100, Next => 0x305d12e0, Prev => 0x305d12c0
+4. Data => 3, Next => 0x305d1300, Prev => 0x305d12c0
+5. Prev => (nil), Data => 4, Next => 0x305d12e0
+After delete!!
+First To Last print
+==========================
+0. Data => 0, Next => 0x305d12a0, Prev => (nil)
+1. Data => 1, Next => 0x305d1340, Prev => 0x305d1320
+2. Data => 100, Next => 0x305d12e0, Prev => 0x305d12a0
+3. Data => 3, Next => 0x305d1300, Prev => 0x305d12c0
+4. Prev => (nil), Data => 4, Next => 0x305d12e0
+Now we are trying to print deleted second noode
+1. Data => -464449232, Next => 0x305d1340, Prev => 0x305d1
