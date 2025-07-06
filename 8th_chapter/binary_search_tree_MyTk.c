@@ -48,10 +48,12 @@ Node *create_BST() {
   for (int i = 0; i < n; i++) {
     scanf("%d", &arr[i]);
   }
-  Node *root = createNode(50), *node;
+  printf("root: %d\n", arr[n / 2]);
+  Node *root = createNode(arr[n / 2]), *node;
 
   for (int i = 0; i < n; i++) {
-
+    if (i == n / 2)
+      continue;
     node = createNode(arr[i]);
     root = bst_insert(root, node);
   }
@@ -62,12 +64,18 @@ void bst_in_order_print(Node *root) {
   if (root->left != NULL) {
     bst_in_order_print(root->left);
   }
+  printf("%d ", root->data);
   if (root->right != NULL) {
     bst_in_order_print(root->right);
   }
-  printf("%d ", root->data);
 }
-
+Node *minimum(Node *root) {
+  Node *node = root;
+  while (node->left != NULL) {
+    node = node->left;
+  }
+  return node;
+}
 Node *bst_search_a_node(Node *root, int item) {
   Node *node = root;
   while (node != NULL) {
@@ -86,14 +94,16 @@ Node *bst_search_a_node(Node *root, int item) {
 int main() {
   Node *root = create_BST();
   bst_in_order_print(root);
-  Node *searchNode = bst_search_a_node(root, 80);
+  Node *searchNode = bst_search_a_node(root, 17);
   if (searchNode != NULL) {
-    printf("\nNode found: \n _%d_\n/    \\\n%d   %d", searchNode->data,
+    printf("\nNode found: \n  _%d_\n /    \\\n%d     %d", searchNode->data,
            searchNode->left ? searchNode->left->data : -1,
            searchNode->right ? searchNode->right->data : -1);
   } else {
     printf("\nNode not found.\n");
   }
+
+  printf("\nMinimum value: %d", minimum(root)->data);
   free(root);
   return 0;
 }
